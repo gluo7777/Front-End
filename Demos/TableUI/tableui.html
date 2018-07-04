@@ -7,63 +7,86 @@
 </head>
 
 <body>
-
-  <h3>The UI have some fixed columns.</<h3></br>
-    <!--Table tags, in general, contain special formatting.-->
-    <table>
-      <!-- Alternating column colors -->
-      <!--
+  <!--Table tags, in general, contain special formatting.-->
+  <table>
+    <!-- Table Caption/Title -->
+    <!-- table:summary attribute similar but deprecated in HTML5 -->
+    <caption>Task Organizer UI</caption>
+    <!-- Alternating column colors -->
+    <!--
         Looks like <colgroup> is supported by all browsers,
         but <col> might not be
         https://stackoverflow.com/questions/3658693/html-table-colgroup-element-not-working
       -->
-      <colgroup>
-        <col style="background-color: rgb(153, 204, 255)">
-        <col style="background-color: rgb(190, 255, 219)">
-        <col style="background-color: rgb(153, 204, 255)">
-        <col style="background-color: rgb(190, 255, 219)">
-      </colgroup>
-      <thead>
-        <tr>
-          <!-- scope is used to associate th with entire column -->
-          <th scope="col">Description</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Priority</th>
-          <th scope="col">Hours Left</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Normal data -->
-        <tr>
-          <td>Finish this table</td>
-          <td>July 7, 2018</td>
-          <td>High</td>
-          <td>6</td>
-        </tr>
-        <!-- Row spanned data -->
-        <tr>
-          <td colspan="4" style="text-align:center;background-color:lightgreen;">FINISHED</td>
-        </tr>
-        <tr>
-          <td colspan="4" style="text-align:center;background-color:orange;">CANCELLED</td>
-        </tr>
-        <!-- Column spanned data -->
-        <tr>
-          <td rowspan="3">Task with 2 parts</td>
-          <!-- <td>Part 1: July 8, 2018</td> -->
-        </tr>
-        <tr>
-          <td>Part 1: July 8, 2018</td>
-          <td>Medium</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>Part 2: July 10, 2018</td>
-          <td>Medium</td>
-          <td>6</td>
-        </tr>
-      </tbody>
-    </table>
+    <colgroup>
+      <col style="background-color: rgb(153, 204, 255)">
+      <col style="background-color: rgb(190, 255, 219)">
+      <col style="background-color: rgb(153, 204, 255)">
+      <col style="background-color: rgb(190, 255, 219)">
+      <col style="background-color: rgb(153, 204, 255)">
+    </colgroup>
+    <!-- thead,tbody,tfoot allows for easy CSS hooks -->
+    <thead>
+      <tr>
+        <!-- scope is used to associate th with entire column -->
+        <th scope="col" rowspan="2">Description</th>
+        <th scope="col" rowspan="2">Due Date</th>
+        <th scope="col" rowspan="2">Priority</th>
+        <th scope="colgroup" colspan="2" style="background-color: darkgreen">Time</th>
+      </tr>
+      <tr>
+        <th scope="col">Hours Left</th>
+        <th scope="col">Mins Left</th>
+      </tr>
+    </thead>
+    <!-- tbody always included - see browser html code -->
+    <tbody>
+      <!-- Normal data -->
+      <tr>
+        <td>Finish this table</td>
+        <td>July 7, 2018</td>
+        <td>High</td>
+        <td>6</td>
+        <td>30</td>
+      </tr>
+      <!-- Row spanned data -->
+      <tr>
+        <td colspan="5" style="text-align:center;background-color:lightgreen;">FINISHED</td>
+      </tr>
+      <tr>
+        <td colspan="5" style="text-align:center;background-color:orange;">CANCELLED</td>
+      </tr>
+      <!-- Column spanned data -->
+      <tr>
+        <td rowspan="3">Task with 2 parts</td>
+        <!-- <td>Part 1: July 8, 2018</td> -->
+      </tr>
+      <tr>
+        <td>Part 1: July 8, 2018</td>
+        <td>Medium</td>
+        <td>6</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Part 2: July 10, 2018</td>
+        <td>Medium</td>
+        <td>6</td>
+        <td>30</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">Total Hours</td>
+        <td>18</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="3">Total Minutes</td>
+        <td></td>
+        <td>90</td>
+      </tr>
+    </tfoot>
+  </table>
 
 </body>
 
