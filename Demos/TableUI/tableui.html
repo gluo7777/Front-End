@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Table UI Demo</title>
+  <link href="tablestyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <h3>The UI have some fixed columns.</<h3></br>
+    <!--Table tags, in general, contain special formatting.-->
+    <table>
+      <!-- Alternating column colors -->
+      <!--
+        Looks like <colgroup> is supported by all browsers,
+        but <col> might not be
+        https://stackoverflow.com/questions/3658693/html-table-colgroup-element-not-working
+      -->
+      <colgroup>
+        <col style="background-color: rgb(153, 204, 255)">
+        <col style="background-color: rgb(190, 255, 219)">
+        <col style="background-color: rgb(153, 204, 255)">
+        <col style="background-color: rgb(190, 255, 219)">
+      </colgroup>
+      <thead>
+        <tr>
+          <!-- scope is used to associate th with entire column -->
+          <th scope="col">Description</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Priority</th>
+          <th scope="col">Hours Left</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Normal data -->
+        <tr>
+          <td>Finish this table</td>
+          <td>July 7, 2018</td>
+          <td>High</td>
+          <td>6</td>
+        </tr>
+        <!-- Row spanned data -->
+        <tr>
+          <td colspan="4" style="text-align:center;background-color:lightgreen;">FINISHED</td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align:center;background-color:orange;">CANCELLED</td>
+        </tr>
+        <!-- Column spanned data -->
+        <tr>
+          <td rowspan="3">Task with 2 parts</td>
+          <!-- <td>Part 1: July 8, 2018</td> -->
+        </tr>
+        <tr>
+          <td>Part 1: July 8, 2018</td>
+          <td>Medium</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>Part 2: July 10, 2018</td>
+          <td>Medium</td>
+          <td>6</td>
+        </tr>
+      </tbody>
+    </table>
+
+</body>
+
+</html>
