@@ -1,0 +1,131 @@
+<html>
+
+<head>
+  <style>
+    /*
+      // Rule set
+      Selector
+        property: property value; // Declaration
+        property: property value; // Declaration
+      }
+    }
+    */
+
+    /* Element Selectors */
+
+    h1 {
+      color: red;
+      width: 500 px;
+      border: 1 px solid lightblue;
+    }
+
+    /* Multiple elements via multi-selectors */
+
+    h2,
+    h3 {
+      color: lightblue;
+      background-color: yellow;
+      text-align: center;
+    }
+
+    /* ID selectors */
+
+    #headerid {
+      color: lightgreen;
+      text-align: right;
+    }
+
+    /* Class selectors */
+
+    .classname {
+      color: purple;
+      text-align: center;
+    }
+
+    /* Attribute selectors */
+
+    p {
+      /* Regular */
+      color: green;
+    }
+
+    p[onclick] {
+      /* Has attribute */
+      color: cyan;
+    }
+
+    #title {
+      color: black;
+      text-align: left;
+    }
+  </style>
+</head>
+<h1>Red header</h1>
+<h2>Other headers</h2>
+<h3>Other headers</h3>
+<h1 id="headerid">Override h1 header with ID selector</h1>
+<h1 class="classname">Override multiple h1 header with class selector</h1>
+<h1 class="classname">Override multiple h1 header with class selector</h1>
+<p>Paragraph without attribute</p>
+<p onclick="">Paragraph with attribute</p>
+<h1 id="title">CSS syntax</h1>
+<code>
+  <pre>
+  /*
+    // Rule set
+    Selector
+      property: property value; // Declaration
+      property: property value; // Declaration
+    }
+  }
+  */
+
+  /* Element Selectors */
+
+  h1 {
+    color: red;
+    width: 500 px;
+    border: 1 px solid lightblue;
+  }
+
+  /* Multiple elements via multi-selectors */
+
+  h2,
+  h3 {
+    color: lightblue;
+    background-color: yellow;
+    text-align: center;
+  }
+
+  /* ID selectors */
+
+  #headerid {
+    color: lightgreen;
+    text-align: right;
+  }
+
+  /* Class selectors */
+
+  .classname {
+    color: purple;
+    text-align: center;
+  }
+
+  /* Attribute selectors */
+
+  p {
+    /* Regular */
+    color: green;
+  }
+
+  p[onclick] {
+    /* Has attribute */
+    color: cyan;
+  }
+</pre>
+</code>
+
+<body>
+</body>
+
+</html>
