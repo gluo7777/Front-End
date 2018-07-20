@@ -58,17 +58,50 @@
       color: black;
       text-align: left;
     }
+
+    /* Pseudo Class Selectors*/
+
+    p:hover {
+      color: yellow;
+      font-family: fantasy;
+      background-color: red;
+    }
+
+    p::selection {
+      color: gold;
+      font-family: cursive;
+      font-weight: bold;
+      background-color: darkblue;
+    }
+
+    p:first-child {
+      background-color: magenta;
+    }
   </style>
 </head>
+<h1 id="title">Tag selectors</h1>
 <h1>Red header</h1>
 <h2>Other headers</h2>
 <h3>Other headers</h3>
+
+<h1 id="title">ID selectors</h1>
 <h1 id="headerid">Override h1 header with ID selector</h1>
+
+<h1 id="title">Class selectors</h1>
 <h1 class="classname">Override multiple h1 header with class selector</h1>
 <h1 class="classname">Override multiple h1 header with class selector</h1>
+
+<h1 id="title">Attribute selectors</h1>
 <p>Paragraph without attribute</p>
 <p onclick="">Paragraph with attribute</p>
+
+<h1 id="title">Psuedo Class selectors</h1>
+<p>Hover Over for CSS change</p>
+
 <h1 id="title">CSS syntax</h1>
+<div>
+  <p>First child</p>
+</div>
 <code>
   <pre>
   /*
