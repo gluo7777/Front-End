@@ -1,0 +1,73 @@
+<html>
+
+<head>
+  <title>Create table using JS and DOM</title>
+  <!-- External Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <style>
+    html {
+      font-family: 'Open Sans', Merienda;
+    }
+
+    .title {
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function generate_table(titlename, rows, cols) {
+      // reference body tag
+      var body = document.getElementsByTagName("body")[0];
+      // TODO: Remove table elements
+      // create table elements
+      var tble = document.createElement("table");
+      tble.setAttribute("border", "2");
+      tble.setAttribute("border-collapse", "true");
+      var tcaption = document.createElement("caption");
+      var title = document.createTextNode(titlename);
+      tcaption.appendChild(title);
+      tble.appendChild(tcaption);
+      var tbody = document.createElement("tbody");
+      tble.setAttribute("text-align", "left");
+      // dynamically add rows and columns
+      for (var i = 0; i < rows; i++) {
+        // create rows
+        var row = document.createElement("tr");
+        for (var j = 0; j < cols; j++) {
+          // create cells/columns and respective text
+          var cell = document.createElement("td");
+          cell.setAttribute("font-color", "blue");
+          var text = document.createTextNode("I'm in [" + (i + 1) + "," + (j + 1) + "]");
+          // add cells
+          cell.appendChild(text);
+          row.appendChild(cell);
+        }
+        // add rows
+        tbody.appendChild(row);
+      }
+      // add to table, add to body
+      tble.appendChild(tbody);
+      body.appendChild(tble);
+    }
+
+    function generate_table_from_html() {
+      var title = document.getElementById("title").value;
+      var rows = document.getElementById("rows").valueAsNumber;
+      var cols = document.getElementById("cols").valueAsNumber;
+      console.log("Generating for rows %d columns %d.", rows, cols);
+      if (rows >= 0 && cols >= 0) {
+        generate_table(title, rows, cols);
+      }
+    }
+  </script>
+</head>
+<label for="title" title="Title of table">Name: <input id="title" type="text" value="Some dumb name"> </label><br>
+<label for="rows" title="Number of Rows">Rows: <input id="rows" type="number" value="0"> </label><br>
+<label for="cols" title="Number of Columns">Columns: <input id="cols" type="number" value="0"> </label><br>
+<input type="button" value="Create a table." onclick="generate_table_from_html()">
+
+<body>
+</body>
+
+</html>
