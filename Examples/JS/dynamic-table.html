@@ -19,9 +19,14 @@
     function generate_table(titlename, rows, cols) {
       // reference body tag
       var body = document.getElementsByTagName("body")[0];
-      // TODO: Remove table elements
+      // remove old table
+      var oldtable = document.getElementById("gen_table");
+      if (oldtable) {
+        oldtable.remove();
+      }
       // create table elements
       var tble = document.createElement("table");
+      tble.setAttribute("id", "gen_table")
       tble.setAttribute("border", "2");
       tble.setAttribute("border-collapse", "true");
       var tcaption = document.createElement("caption");
@@ -51,20 +56,27 @@
       body.appendChild(tble);
     }
 
+    var max = 10;
+
     function generate_table_from_html() {
       var title = document.getElementById("title").value;
       var rows = document.getElementById("rows").valueAsNumber;
       var cols = document.getElementById("cols").valueAsNumber;
       console.log("Generating for rows %d columns %d.", rows, cols);
-      if (rows >= 0 && cols >= 0) {
+      if (
+        rows >= 0 && cols >= 0 &&
+        rows <= max && cols <= max
+      ) {
         generate_table(title, rows, cols);
+      } else {
+        window.alert("Enter something between 0 and 10, inclusive.")
       }
     }
   </script>
 </head>
-<label for="title" title="Title of table">Name: <input id="title" type="text" value="Some dumb name"> </label><br>
-<label for="rows" title="Number of Rows">Rows: <input id="rows" type="number" value="0"> </label><br>
-<label for="cols" title="Number of Columns">Columns: <input id="cols" type="number" value="0"> </label><br>
+<label for="title" title="Title of table">Name: <input id="title" type="text" value="Some dumb name" on > </label><br>
+<label for="rows" title="Number of Rows">Rows: <input id="rows" type="number" value="0" min="0" max="10"> </label><br>
+<label for="cols" title="Number of Columns">Columns: <input id="cols" type="number" value="0" min="0" max="10"> </label><br>
 <input type="button" value="Create a table." onclick="generate_table_from_html()">
 
 <body>
