@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Javascript Practice</title>
+  <script type="text/javascript" src="api.js"></script>
+</head>
+<body>
+  <!-- HTML body -->
+  <label for="key"> Key
+    <input type="text" name="key" id="key" value="">
+  </label>
+  <label for="payload"> Value
+    <input type="text" name="payload" id="payload" value="">
+  </label>
+  <button type="button" name="button" onclick="saveToStorage('session',key.value,payload.value)">Save to session.</button>
+  <button type="button" name="button" onclick="saveToStorage('local',key.value,payload.value)">Save to local.</button>
+  <!-- Begin JS code -->
+  <script type="text/javascript">
+    var local = storageAvailable('localStorage');
+    var session = storageAvailable('sessionStorage');
+    console.log(
+      "Local storage is available: %s.\n"+
+      "Session storage is available: %s.",
+      local,
+      session
+    );
+
+  </script>
+</body>
+</html>

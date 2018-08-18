@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Javascript Practice</title>
+  <script type="text/javascript" src="constants.js"></script>
+  <script type="text/javascript" src="api.js"></script>
+</head>
+<body>
+  <!-- HTML body -->
+  <p id="placeHolder"></p><br>
+  <button type="button" name="numBtn" id="btn1" style="background-color: blue">Random</button>
+  <!-- Begin JS code -->
+  <script type="text/javascript">
+    var placeHolder = document.getElementById("placeHolder");
+    var key = "randNum";
+    // on page load
+    // retrieve and assign saved data
+    document.addEventListener(Const.EVENT.DOM_LOAD, function(event){
+      placeHolder.innerText = getFromStorage(Const.WINDOWS.SESSION_DB,key);
+    });
+    // Event Listeners
+    var numBtn = document.getElementById("btn1");
+    // Event Handlers
+    // Prefer using event Handlers properties over in-line HTML event handlers
+    // e.g. <button onclick="bgChange()">Press me</button>
+    numBtn.onmouseover = () => numBtn.style.backgroundColor = "red";
+    numBtn.onmouseout = () => numBtn.style.backgroundColor = "blue";
+    numBtn.onclick = () => {
+      var num = randNum(50);
+      placeHolder.innerText = num;
+      saveToStorage(Const.WINDOWS.SESSION_DB,key,num);
+    };
+
+  </script>
+</body>
+</html>
