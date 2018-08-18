@@ -29,3 +29,35 @@
 ```HTML
 <td>&nbsp;</td>
 ````
+
+## Browsers
+- [Guide](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)
+- WebKit
+- W3C specifications
+- Parts
+ - Rendering engine (Chrome - separate processes for each tab)
+ - JS interpreter
+- Rendering
+ - parse HTML
+  - Generate DOM tree
+ - parse CSS
+  - Generate render tree
+- layout
+- painting
+- [Diagram](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/webkitflow.png)
+- Grammar
+ - Context Free
+ - Parser-Lexer
+  - Lexical analysis: Tokens
+   - Vocabulary: Regex exp.
+  - Syntax analysis: Rules to classify input -> Token
+   - BNF
+ - Parsing
+  - Top Down
+  - Bottom Up
+  - Auto: Flex, Bison
+ - HTML vs XML
+  - HTML is not strict nor BNF compatible
+   - Pre-processing needed
+ - HTML DTD
+
