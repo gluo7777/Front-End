@@ -26,7 +26,7 @@
 
     <div>
       <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item">
+      <input type="text" name="item" id="item" autocomplete="true" autofocus="true">
       <button>Add item</button>
     </div>
 
@@ -43,24 +43,34 @@
       // external reference to text node for styling purposes
       var lastAddedItem = null;
 
-      // Add listener
-      btn.onclick = function(){
-        var item = document.createElement('li');
-        var name = document.createElement('span');
-        var removeBtn = document.createElement('button');
-        removeBtn.onclick = function(){
-          list.removeChild(item);
-        };
-        removeBtn.appendChild(document.createTextNode('Remove'));
-        name.appendChild(document.createTextNode(input.value));
-        name.setAttribute('class','highlight');
-        item.appendChild(name);
-        item.appendChild(removeBtn);
-        list.appendChild(item);
-        if(lastAddedItem != null){
-          lastAddedItem.removeAttribute('class');
+      // function for adding items
+
+      var addItem = function(){
+       var item = document.createElement('li');
+       var name = document.createElement('span');
+       var removeBtn = document.createElement('button');
+       removeBtn.onclick = function(){
+         list.removeChild(item);
+       };
+       removeBtn.appendChild(document.createTextNode('Remove'));
+       name.appendChild(document.createTextNode(input.value));
+       name.setAttribute('class','highlight');
+       item.appendChild(name);
+       item.appendChild(removeBtn);
+       list.appendChild(item);
+       if(lastAddedItem != null){
+         lastAddedItem.removeAttribute('class');
+       }
+       lastAddedItem = name;
+       input.focus();
+     };
+
+      // Add listeners
+      btn.onclick = addItem;
+      input.onkeydown = input.onkeydown = function(){
+        if(event.key == 'Enter'){
+          addItem();
         }
-        lastAddedItem = name;
       };
     </script>
   </body>

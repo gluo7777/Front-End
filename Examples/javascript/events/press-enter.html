@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Get text of input when enter is pressed</title>
+</head>
+<body>
+  <input type="text"/>
+  <script>
+    var input = document.querySelector('input');
+    input.onkeydown = function(){
+      if(event.key == 'Enter'){
+        window.alert('You typed ' + input.value + '!');
+      }
+    };
+  </script>
+</body>
+</html>
