@@ -1,4 +1,7 @@
-# Demo Notes
+# Folders
+- Demo: Actual usable component
+- Examples: Code Snippets. May be usable.
+- Diagrams
 
 ## css
 ### rem vs px vs em
