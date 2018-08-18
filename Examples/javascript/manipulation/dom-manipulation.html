@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple DOM example</title>
+  </head>
+  <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p id="label1">Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+      <script>
+        // Manipulation via HTMLElement objects
+        // Select elements using CSS selectors: node names, id, class name
+        var link = document.querySelector('a');
+
+        // HTMLImageElement
+        var img = document.querySelector("img");
+
+        // modify link via HTMLLinkElement
+        link.textContent = "Some other URI name";
+        link.href = "https://www.google.com";
+
+        // Create and append elements
+        var section = document.querySelector('section');
+        var title = document.createElement('h1');
+        title.textContent = "Welcome to my page!";
+        section.appendChild(title);
+
+        // add text
+        var paragraph = document.createElement('p');
+        var text = document.createTextNode('How do you like the look of the site?');
+        paragraph.appendChild(text);
+        section.appendChild(paragraph);
+
+        // move elements (not duplicate)
+        // document.querySelector('a') returned a reference
+        // call appendChild again to add it to bottom
+        section.appendChild(link);
+
+        // clone Elements
+        var link2 = link.cloneNode(true); // deep=true clones children nodes as well
+        section.appendChild(document.createElement('br'));
+        section.appendChild(link2);
+
+        // remove elements: Parent -> Child
+        section.removeChild(link2);
+
+        // remove elements: Node -> Self
+        paragraph.parentNode.removeChild(paragraph);
+      </script>
+  </body>
+</html>
