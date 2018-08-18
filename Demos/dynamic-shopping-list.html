@@ -1,77 +1,94 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Shopping list example</title>
-    <style>
-      li {
-        margin-bottom: 10px;
+
+<head>
+  <meta charset="utf-8">
+  <title>Shopping list example</title>
+  <style>
+    li {
+      margin-bottom: 10px;
+    }
+
+    li button {
+      font-size: 8px;
+      margin-left: 20px;
+      color: #666;
+    }
+
+    p {
+      color: red;
+      font-weight: bold;
+    }
+
+    .highlight {
+      color: cyan;
+      padding: 10px;
+      width: 250px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>My shopping list</h1>
+
+  <div>
+    <label for="item">Enter a new item:</label>
+    <input type="text" name="item" id="item" autocomplete="true" autofocus="true">
+    <button>Add item</button>
+    <p hidden="true">Item cannot have an empty name!</p>
+  </div>
+
+  <ul>
+
+  </ul>
+
+  <script>
+    // Global References
+    var list = document.querySelector('ul');
+    var input = document.querySelector('input');
+    var btn = document.querySelector('button');
+    var error = document.querySelector('p');
+    // external reference to text node for styling purposes
+    var lastAddedItem = null;
+
+    // function for adding items
+    var addItem = function() {
+      error.hidden = true;
+      // input validation
+      if(input.value == ''){
+        error.hidden = false;
+        return;
       }
-      li button {
-        font-size: 8px;
-        margin-left: 20px;
-        color: #666;
-      }
-      .highlight {
-        color: cyan;
-        padding: 10px;
-        width: 250px;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-
-    <h1>My shopping list</h1>
-
-    <div>
-      <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item" autocomplete="true" autofocus="true">
-      <button>Add item</button>
-    </div>
-
-    <ul>
-
-    </ul>
-
-    <script>
-      // Global References
-      var list = document.querySelector('ul');
-      var input = document.querySelector('input');
-      var btn = document.querySelector('button');
-
-      // external reference to text node for styling purposes
-      var lastAddedItem = null;
-
-      // function for adding items
-
-      var addItem = function(){
-       var item = document.createElement('li');
-       var name = document.createElement('span');
-       var removeBtn = document.createElement('button');
-       removeBtn.onclick = function(){
-         list.removeChild(item);
-       };
-       removeBtn.appendChild(document.createTextNode('Remove'));
-       name.appendChild(document.createTextNode(input.value));
-       name.setAttribute('class','highlight');
-       item.appendChild(name);
-       item.appendChild(removeBtn);
-       list.appendChild(item);
-       if(lastAddedItem != null){
-         lastAddedItem.removeAttribute('class');
-       }
-       lastAddedItem = name;
-       input.focus();
-     };
-
-      // Add listeners
-      btn.onclick = addItem;
-      input.onkeydown = input.onkeydown = function(){
-        if(event.key == 'Enter'){
-          addItem();
-        }
+      // actual adding
+      var item = document.createElement('li');
+      var name = document.createElement('span');
+      var removeBtn = document.createElement('button');
+      removeBtn.onclick = function() {
+        list.removeChild(item);
       };
-    </script>
-  </body>
+      removeBtn.appendChild(document.createTextNode('Remove'));
+      name.appendChild(document.createTextNode(input.value));
+      name.setAttribute('class', 'highlight');
+      item.appendChild(name);
+      item.appendChild(removeBtn);
+      list.appendChild(item);
+      if (lastAddedItem != null) {
+        lastAddedItem.removeAttribute('class');
+      }
+      lastAddedItem = name;
+      input.focus();
+    };
+
+    // Add listeners
+    btn.onclick = addItem;
+    input.onkeydown = input.onkeydown = function() {
+      if (event.key == 'Enter') {
+        addItem();
+      }
+    };
+  </script>
+</body>
+
 </html>
