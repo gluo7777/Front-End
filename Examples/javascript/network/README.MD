@@ -19,6 +19,15 @@
  - Retrieves JSON as well
 - [Web API proxy](https://mdn.mozillademos.org/files/6477/moderne-web-site-architechture@2x.png)
 
+### Promises
+- complements Fetch API to store asynchronous responses
+- FETCH -> THEN -> RESPONSE -> TEXT -> THEN
+- VS XMLHttpRequest
+ - XHR
+  - great cross/browser support
+ - Fetch/Promise
+  - IE not supported 
+
 ## Testing
 - Chrome will not load local files
 - [Setting up local web server](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
