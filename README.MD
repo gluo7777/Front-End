@@ -1,3 +1,7 @@
+# Bookmarks
+- [DOM Reference](https://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109/idl-definitions.html)
+- [Browser Guide](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)
+
 # Folders
 - Demo: Actual usable component
 - Examples: Code Snippets. May be usable.
@@ -60,4 +64,3 @@
   - HTML is not strict nor BNF compatible
    - Pre-processing needed
  - HTML DTD
-
