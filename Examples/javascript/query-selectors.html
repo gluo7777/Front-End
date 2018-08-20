@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Query Selectors examples</title>
+  </head>
+  <body>
+    <p id="word1" class="class1">Place holder</p>
+    <p id="word2" class="class1">Place holder</p>
+    <p id="word3" class="class2">Place holder</p>
+    <p id="word4" class="class2">Place holder</p>
+    <p id="total">Place holder</p>
+    <div id="parent1">
+      <h1>Title 1</h1>
+      <p>Some words of encouragement.</p>
+    </div>
+    <div id="parent2">
+      <h1>Title 2</h1>
+      <p>Some words of encouragement.</p>
+      <div id="child">
+        <h1>Child Title 1</h1>
+        <p>Some words of encouragement.</p>
+      </div>
+    </div>
+    <script>
+      // Guide: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+      // single match by id
+      var word3 = document.querySelector('#word3');
+      word3.innerText = 'Word 3 Text.';
+
+      // get all matches
+      // .class1 also works
+      var class1list = document.querySelectorAll('p.class1');
+      class1list[0].innerText = 'Word 1 text.'
+      class1list[1].innerText = 'Word 2 text.'
+
+      // multiple selectors
+      var allclasseslist = document.querySelectorAll('p.class1,p.class2'); // CSV string param
+      document.querySelector('#total').innerText = 'Total number of words = ' + allclasseslist.length;
+
+      // nested selection
+      document.querySelector('#parent1 p').innerText = 'Some much better words of encouragement!';
+      document.querySelector('#parent2 #child p').innerText = 'Nesting gone wild!';
+    </script>
+  </body>
+</html>
