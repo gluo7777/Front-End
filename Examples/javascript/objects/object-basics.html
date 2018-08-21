@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic Javascript Object Oriented Programming</title>
+  </head>
+  <body>
+    <p id="school"></p>
+    <script>
+      // basic object with 1 function
+      var school = {
+        name : 'University of SomePlace'
+        ,address : ['4300','Red','Oak']
+        // sub-namespace / nested object
+        ,students : [
+          {
+            firstName : 'William'
+            ,lastName : 'Luo'
+            ,age : 23
+          }
+          ,{
+            firstName : 'David'
+            ,lastName : 'Luo'
+            ,age : 14
+          }
+        ]
+        ,toString: function(){
+          return 'name: ' + this.name + ', ' + 'address: ' + this.address.join(' ');
+        }
+      }
+      var par = document.querySelector('#school');
+      par.innerText = school.toString();
+
+      // access using dot notation
+      console.log('Our school is ' + school.name);
+      console.log('%s goes to this school.',school.students[1].firstName);
+
+      // access using bracket notation / associative arrays
+      console.log('%s goes to this school.',school['students'][0]['firstName']);
+
+      // setters
+      school.students[1].firstName = 'Henry';
+      console.log('%s goes to this school.',school.students[1].firstName);
+
+      // create new members / new functions
+      school.message = 'Enjoy your stay!';
+      school.welcome = function() {
+        console.log('Welcome to %s! %s',school.name, school.message);
+      }
+      school.welcome();
+
+      // adding custom field names
+      var someName = 'Mascot';
+      var someValue = 'Tiger';
+      school[someName] = someValue;
+      console.log('The school\'s %s is %s',someName,school[someName]);
+
+    </script>
+  </body>
+</html>
