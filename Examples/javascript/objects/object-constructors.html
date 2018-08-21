@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Basic Javascript Object Oriented Programming</title>
+</head>
+
+<body>
+  <p id="paragraph"></p>
+  <script>
+    // create an object via regular function
+    function createNewPerson(name) {
+      var obj = {};
+      obj.name = name;
+      obj.greeting = function() {
+        alert('Hi! I\'m ' + this.name + '.');
+      };
+      return obj;
+    }
+    var william = createNewPerson('William');
+    william.name;
+    william.greeting();
+
+    // create an object via constructor function
+    function Person(name) {
+      this.name = name;
+      this.greeting = function() {
+        alert('Hi! I\'m ' + this.name + '.');
+      };
+    }
+    var henry = new Person('Henry');
+    henry.name;
+    henry.greeting();
+
+    // complex constructor
+    function Person(first, last, age, gender, interests) {
+      this.name = {
+        'first': first,
+        'last': last
+      };
+      this.age = age;
+      this.gender = gender;
+      this.interests = interests;
+      this.bio = function() {
+        var lastInterest = this.interests.pop();
+        alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ' +
+          (this.gender = 'male' ? 'He' : 'She') +
+          ' likes ' + this.interests.join(',') + (lastInterest != null ? ', and ' : '') + lastInterest + '.');
+      };
+      this.greeting = function() {
+        alert('Hi! I\'m ' + this.name.first + '.');
+      };
+    }
+    var person1 = new Person('Bob', 'Smith', 32, 'male', ['programming', 'music', 'skiing']);
+    person1.greeting();
+    person1.bio();
+
+    // Object constructor
+    var blank = new Object();
+    blank.name = 'Some dumb object';
+    console.log(blank.name);
+
+    blank = new Object({
+      name: 'Chris',
+      age: 38,
+      greeting: function() {
+        alert('Hi! I\'m ' + this.name + '.');
+      }
+    });
+
+    blank.greeting();
+
+    // Object.create(oldObj)
+    // essentially clones object
+    var blank2 = Object.create(blank);
+    blank2.greeting();
+    // var par = document.querySelector('#paragraph');
+  </script>
+</body>
+
+</html>
