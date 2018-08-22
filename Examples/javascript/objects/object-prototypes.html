@@ -3,14 +3,51 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Basic Javascript Object Oriented Programming</title>
+  <title>Java's retarded son</title>
 </head>
 
 <body>
   <p id="paragraph"></p>
   <script>
-    
-    // var par = document.querySelector('#paragraph');
+    // Object prototype
+    var Person = function(firstName,lastName){
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.greeting = function() {
+        alert('Hi! I\'m ' + this.firstName + ' ' + this.lastName + '.');
+      };
+    }
+    var william = new Person('William','Luo');
+    // william.greeting();
+    // william -> Person -> Object -> valueOf
+    console.log(william.valueOf());
+
+    // explicit constructor property
+    var henry = new william.constructor('Henry','bobber');
+    henry.greeting();
+
+    // inheriting methods
+    // modifying prototype
+    // not inherited by henry
+    william.greeting2 = function () {
+      console.log('Greetings friend, this is %s %s.',this.firstName,this.lastName);
+    }
+    // inherited by henry
+    Person.prototype.greeting3 = function () {
+      console.log('Yo wassup, dis ya boy %s %s here!',this.firstName,this.lastName);
+    }
+    henry.greeting3();
+
+    // Property constructor pattern
+    // define constants in constructor methods
+    // define methods against prototype
+    var Car = function(make, model, year) {
+      this.name = [make, model, year].join(" ");
+    }
+    Car.prototype.drive = function () {
+      console.log('It\'s %s and I\'m driving my %s.',new Date(Date.now()),this.name);
+    }
+    new Car('Toyota', 'Corolla', 2011).drive();
   </script>
 </body>
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Basic Javascript Object Oriented Programming</title>
+</head>
+
+<body>
+  <p id="param"></p>
+  <script>
+    // Functions are also objects
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+    // poor performance and not as secure
+    var multiply = new Function('x', 'y', 'return x * y');
+    console.log('4 * 5 = %d', multiply(4, 5));
+    console.log('Is constructor a Function object: %s', multiply.constructor === Function); // true
+
+    // without new
+    var sub = Function('x', 'y', 'return x - y');
+    console.log('4 - 5 = %d', sub(4, 5));
+
+    // Function scope is global and local and not within scope
+    var x = 10;
+
+    function createFunction1() {
+      var x = 20;
+      return new Function('return x;'); // this |x| refers global |x|
+    }
+
+    function createFunction2() {
+      var x = 20;
+
+      function f() {
+        return x; // this |x| refers local |x| above
+      }
+      return f;
+    }
+
+    // minifyability
+    function makeFunction(code) {
+      return Function('"use strict";return ' + code)();
+    }
+    var add = makeFunction(
+      "" + function(a, b, c) {
+        return a + b + c
+      } // move this to a separate file in the production release
+    );
+    console.log(add(1, 2, 3)); // will log six
+  </script>
+</body>
+
+</html>
