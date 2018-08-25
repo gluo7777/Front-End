@@ -7,30 +7,6 @@
   <body>
     <p></p>
     <script>
-      // strings
-      var file = 'adsad   sds'.replace(/\s/g,'').toLowerCase() + '.txt';
-
-      // constants
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
-      // strings
-      const msg = 'Hello World!';
-      try {
-        msg = 'World sucks1';
-      } catch (e) {
-        console.log('Got error %s',e);
-      } finally {
-        console.log(msg);
-      }
-      // objects
-      // underlying not immutable
-      const obj1 = {x:'World sucks!'};
-      try {
-        obj1.x = 'Hello World!';
-      } catch (e) {
-        console.log('Got error %s',e);
-      } finally {
-        console.log(obj1.x);
-      }
 
       // block scope
       // var // function or global
@@ -51,6 +27,8 @@
       let myFuture = 'global';
       // this refers to global object
       console.log('My future = %s',this.myFuture);
+
+      // emulate private members of classes
     </script>
   </body>
 </html>

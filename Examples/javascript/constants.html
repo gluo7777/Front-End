@@ -7,8 +7,6 @@
   <body>
     <p></p>
     <script>
-      // strings
-      var file = 'adsad   sds'.replace(/\s/g,'').toLowerCase() + '.txt';
 
       // constants
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
@@ -31,26 +29,6 @@
       } finally {
         console.log(obj1.x);
       }
-
-      // block scope
-      // var // function or global
-      var var1 = 5;
-      if (true) {
-        var var1 = 10;
-        console.log('var1 inside block = %d',var1);
-      }
-      console.log('var1 outside block = %d',var1);
-      // let // block
-      var var1 = 5;
-      if (true) {
-        let var1 = 10;
-        console.log('var1 inside block = %d',var1);
-      }
-      console.log('var1 outside block = %d',var1);
-      // let // no global
-      let myFuture = 'global';
-      // this refers to global object
-      console.log('My future = %s',this.myFuture);
     </script>
   </body>
 </html>
