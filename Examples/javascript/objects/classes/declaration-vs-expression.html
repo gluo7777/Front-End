@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <script type="text/javascript">
+
+    // Expression
+    // Reuse as many times as you want
+    var square1 = class Square {
+      constructor(length) {
+        this.area = length ** 2;
+      }
+    }
+    var square2 = class Square {
+      constructor(length) {
+        this.area = length ** 2;
+      }
+    }
+    // Declaration
+    // Throws an error for second declaration
+    class Rectangle {
+      constructor(height, width) {
+        this.height = height;
+        this.width = width;
+      }
+      area() {
+        return this.height * this.width;
+      }
+    };
+    // class Rectangle{
+    // }; // compilation error
+
+    // anonymous classes
+    let Triangle = class {
+      constructor(base, height) {
+        this.area = 0.5 * base * height;
+      }
+    }
+    console.log(Triangle.name);
+
+    // body of a class is executed in strict mode
+    let StrictClass = class {
+      constructor() {
+        this.foo = function sum(a, a, c) { // !!! syntax error
+          return a + a + c; // wrong if this code ran
+        };
+      }
+    }
+
+    // only 1 constructor method
+    let OneConstructor = class {
+      constructor() {
+      }
+      constructor(){}
+    }
+  </script>
+</body>
+
+</html>

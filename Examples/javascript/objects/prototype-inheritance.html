@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // child class has priority over proto
+    // Examples copied from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain#Using_prototypes_in_JavaScript
+    // using new
+    function foo() {}
+    foo.prototype = {
+      foo_prop: "foo val"
+    };
+
+    function bar() {}
+    var proto = new foo;
+    proto.bar_prop = "bar val";
+    bar.prototype = proto;
+    var inst = new bar;
+    inst.inst_prop = 'inst val';
+    console.log(inst.foo_prop);
+    console.log(inst.bar_prop);
+    console.log(inst.inst_prop);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hoisting</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // Functions declarations are hoisted
+    // use function before declaration
+    doSomething('Hello World!');
+
+    function doSomething(msg) {
+      console.log(msg);
+    }
+
+    // initializations are not hoisted
+    console.log(num); // Returns undefined
+    var num;
+    num = 6;
+    // declare before hand
+    num2 = 6;
+    console.log(num2); // returns 6
+    var num2;
+
+    // Class declarations are not hoisted
+    try {
+      var rect = new Rectangle(); // ReferenceError
+      class Rectangle {
+        constructor() {
+
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    } finally {
+
+    }
+  </script>
+</body>
+
+</html>

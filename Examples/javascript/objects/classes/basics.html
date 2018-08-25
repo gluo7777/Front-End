@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Basic class syntax</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Methods
+      // Getters
+      class Person {
+        constructor(first,last) {
+          // instance properties
+          this.first = first;
+          this.last = last;
+        }
+
+        // called when name is referenced e.g. Person.name
+        get name(){
+          return this.first + ' ' + this.last;
+        }
+
+        greet(){
+          console.log('Hi, my name is %s.', this.name);
+        }
+      }
+
+      var william = new Person('William','Luo');
+      william.greet();
+
+      // generic Getters
+      var obj1 = {
+        get msg(){return 'Hello World!';}
+      }
+      console.log(obj1.msg);
+
+      // computed property names
+      var first = 'firstName';
+      var last = 'lastName';
+      var obj2 = {
+        get [first](){return 'William';},
+        get [last](){return 'Luo';}
+      }
+      console.log('My name is %s %s',obj2.firstName, obj2.lastName);
+
+      // static Methods
+      class MathUtil {
+        constructor() {
+
+        }
+
+        static inRange(x,y,z){
+          return x < y && y < z;
+        }
+      }
+      console.log(MathUtil.inRange(1,3,5));
+      console.log(MathUtil.inRange(5,3,5));
+
+      // static and prototype properties
+      MathUtil.pi = 3.14;
+      MathUtil.prototype.e = 2.17;
+      console.log('pi=%f\te=%f',MathUtil.pi,MathUtil.prototype.e);
+    </script>
+  </body>
+</html>
