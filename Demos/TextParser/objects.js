@@ -4,17 +4,17 @@ console.log('Test js');
 function Matcher(input,delimiter,isPattern) {
   this.input = input.split(delimiter);
   this.isPattern = isPattern;
-  if(this.input.isEmpty()){
+  if(this.input.length == 0){
     throw new Error('Generated 0 tokens from input');
   }
 }
 function Parser(input,delimiter,matchers) {
   this.input = input.split(delimiter);
-  if(this.input.isEmpty()){
+  if(this.input.length == 0){
     throw new Error('Generated 0 tokens from input');
   }
   this.matchers = matchers;
-  if(this.matchers.isEmpty()){
+  if(this.matchers.length == 0){
     throw new Error('No matchers selected');
   }
 }
