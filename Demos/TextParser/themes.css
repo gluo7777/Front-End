@@ -1,0 +1,17 @@
+div.matcher{
+  background-color: cyan;
+}
+
+div.parser{
+  background-color: lightgreen;
+}
+
+div.results{
+  background-color: blue;
+}
+
+h2.sectionHeader{
+  text-align: center;
+  font-size: 40 px;
+  font-weight: bold;
+}

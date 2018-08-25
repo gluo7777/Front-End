@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Text Parser</title>
+  <script type="text/javascript" src="script.js"></script>
+  <link rel="stylesheet" href="themes.css">
+</head>
+
+<body>
+  <nav>
+
+  </nav>
+  <header>
+    <h1 id="title">Text Parser</h1>
+  </header>
+  <main>
+    <div class="matcher">
+      <h2 class="sectionHeader">Create a new matcher:</h2>
+      <label for="matcherInput">Enter a list of patterns or text delimited:</label>
+      <br>
+      <textarea id="matcherInput" name="matcherInput" rows="8" cols="80"></textarea>
+      <br>
+      <div class="addMatcherInputs">
+        <label for="delimiter">Delimiter:</label>
+        <input type="text" id="delimiter" name="delimiter" value=",">
+        <label for="pattern">Use pattern ( * ? + ):</label>
+        <input type="checkbox" name="pattern" id="pattern" value="">
+        <button type="button" name="addMatcher">Add</button>
+      </div>
+    </div>
+    <div class="parser">
+      <h2 class="sectionHeader">Parse text:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Text to Parse</th>
+            <th scope="col">Select Matcher(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <textarea id="textInput" name="textInput" rows="8" cols="80"></textarea>
+            </td>
+            <td>
+              <select class="matcherList" name="matcherList" multiple size="10">
+              <option value="none">-- Choose at least one matcher --</option>
+                <optgroup label="Ungrouped">
+                  <option value="Placeholder">Placeholder1</option>
+                  <option value="Placeholder">Placeholder2</option>
+                </optgroup>
+            </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" name="parseText">Parse</button>
+    </div>
+    <div class="results">
+      <h2 class="sectionHeader">Matched text:</h2>
+      <label for="matchResults"></label>
+      <br>
+      <textarea name="matchResults" id="matchResults" rows="8" cols="80"></textarea>
+    </div>
+  </main>
+  <footer>
+    <h3 id="disclaimer">Made by William.</h3>
+  </footer>
+</body>
+
+</html>
