@@ -45,7 +45,7 @@ class Match {
 
 // DOM reference wrappers
 // Note: This object can only be instantiated when the DOM has loaded
-class TextParser {
+class Page {
   constructor() {
     this.matcher = {
       nameText: document.querySelector('input#matcherName'),

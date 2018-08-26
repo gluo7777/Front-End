@@ -2,7 +2,7 @@ var page;
 // Initialize DOM references
 document.addEventListener(Events.DOM_LOAD, function(event) {
   console.log('Document loaded');
-  page = new TextParser();
+  page = new Page();
   // load matchers
   page.matchers.forEach(function(matcher, index) {
     addToSelect(matcher,index);
