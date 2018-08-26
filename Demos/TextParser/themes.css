@@ -15,3 +15,8 @@ h2.sectionHeader{
   font-size: 40 px;
   font-weight: bold;
 }
+
+p.error{
+  color: red;
+  font-weight: bold;
+}

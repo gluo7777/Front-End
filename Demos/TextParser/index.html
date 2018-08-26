@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Text Parser</title>
+  <script type="text/javascript" src="utility.js"></script>
   <script type="text/javascript" src="objects.js"></script>
   <script type="text/javascript" src="listeners.js"></script>
   <link rel="stylesheet" href="themes.css">
@@ -19,17 +20,21 @@
   <main>
     <div class="matcher">
       <h2 class="sectionHeader">Create a new matcher:</h2>
-      <label for="matcherInput">Enter a list of patterns or text delimited:</label>
+      <label for="matcherName">Matcher Name:</label>
+      <input type="text" id="matcherName" name="matcherName" value="">
       <br>
-      <textarea id="matcherInput" name="matcherInput" rows="8" cols="80"></textarea>
+      <label for="matcherInput">Input:</label>
+      <br>
+      <textarea id="matcherInput" name="matcherInput" rows="8" cols="80" placeholder="Enter a list of patterns or text delimited..."></textarea>
       <br>
       <div class="addMatcherInputs">
         <label for="matcherDelimiter">Delimiter:</label>
         <input type="text" id="matcherDelimiter" name="matcherDelimiter" value=",">
         <label for="pattern">Use pattern ( * ? + ):</label>
         <input type="checkbox" name="pattern" id="pattern" value="">
-        <button type="button" name="addMatcher">Add</button>
+        <button type="button" name="addMatcher" id="addMatcher">Add</button>
       </div>
+      <p id="matcherErrorText" class="error" hidden></p>
     </div>
     <div class="parser">
       <h2 class="sectionHeader">Parse text:</h2>
@@ -46,16 +51,11 @@
               <textarea id="textInput" name="textInput" rows="8" cols="80"></textarea><br>
               <label for="parserDelimiter">Delimiter:</label>
               <input type="text" id="parserDelimiter" name="parserDelimiter" value=",">
-              <button type="button" name="parseText">Parse</button>
+              <button type="button" name="parseText" id="parseText">Parse</button>
             </td>
             <td>
               <select class="multiList" name="matcherList" id="matcherList" multiple size="10">
-              <option value="none">-- Choose at least one matcher --</option>
-                <optgroup label="Ungrouped">
-                  <option value="Placeholder">Placeholder1</option>
-                  <option value="Placeholder">Placeholder2</option>
-                </optgroup>
-            </select>
+              </select>
             </td>
           </tr>
         </tbody>
@@ -65,7 +65,7 @@
       <h2 class="sectionHeader">Matched text:</h2>
       <label for="matchResults"></label>
       <br>
-      <textarea name="matchResults" id="matchResults" rows="8" cols="80"></textarea>
+      <textarea name="matchResults" id="matchResults" rows="8" cols="80" readonly></textarea>
     </div>
   </main>
   <footer>

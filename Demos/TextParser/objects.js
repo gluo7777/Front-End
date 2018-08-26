@@ -1,45 +1,69 @@
-console.log('Test js');
+// Constants
+const Events = {
+  CLICK: 'click',
+  DOM_LOAD: 'DOMContentLoaded'
+};
 
-// Object constructors
-function Matcher(input,delimiter,isPattern) {
-  this.input = input.split(delimiter);
-  this.isPattern = isPattern;
-  if(this.input.length == 0){
-    throw new Error('Generated 0 tokens from input');
+// Errors
+class InputError extends Error {
+}
+
+// Helper classes to hold data
+class Matcher {
+  constructor(name, input, delimiter, isPattern) {
+    if(isBlank(name) || isBlank(input) || isBlank(delimiter)){
+      throw new InputError('Input cannot be blank.');
+    }
+    this.name = name;
+    this.input = input.split(delimiter);
+    this.isPattern = isPattern;
   }
 }
-function Parser(input,delimiter,matchers) {
-  this.input = input.split(delimiter);
-  if(this.input.length == 0){
-    throw new Error('Generated 0 tokens from input');
-  }
-  this.matchers = matchers;
-  if(this.matchers.length == 0){
-    throw new Error('No matchers selected');
+class Parser {
+  constructor(input, delimiter, matchers) {
+    if(isBlank(input) || isBlank(delimiter)){
+      throw new InputError('Input cannot be blank.');
+    }
+    if (matchers.length == 0) {
+      throw new InputError('No matchers selected');
+    }
+    this.input = input.split(delimiter);
+    this.matchers = matchers;
   }
 }
-function MatchedToken(token,isMatch,matcherToken) {
-  this.token = token;
-  this.isMatch = isMatch;
-  this.matcherToken = matcherToken;
-}
-function Match(matchedTokenList) {
-  this.matchedTokenList = matchedTokenList;
+class Match {
+  constructor(matchedTokenList) {
+    this.matchedTokenList = matchedTokenList;
+  }
+
+  static createMatchedToken(token, isMatch, matcherToken) {
+    this.token = token;
+    this.isMatch = isMatch;
+    this.matcherToken = matcherToken;
+  }
 }
 
 // DOM reference wrappers
-var matcherd = {
-  inputTextArea: document.querySelector('textarea#matcherInput'),
-  delimiterText: document.querySelector('input#matcherDelimiter'),
-  patternCheckBox: document.querySelector('input#pattern'),
-  addMatcherBtn: document.querySelector('button#addMatcher')
-};
-var parserd = {
-  inputTextArea: document.querySelector('textarea#textInput'),
-  delimiterText: document.querySelector('input#parserDelimiter'),
-  parseBtn: document.querySelector('button#parseText'),
-  matcherList: document.querySelector('select#matcherList')
-};
-var displayd = {
-  outputTextArea: document.querySelector('textarea#matchResults')
-};
+// Note: This object can only be instantiated when the DOM has loaded
+class TextParser {
+  constructor() {
+    this.matcher = {
+      nameText: document.querySelector('input#matcherName'),
+      inputTextArea: document.querySelector('textarea#matcherInput'),
+      delimiterText: document.querySelector('input#matcherDelimiter'),
+      patternCheckBox: document.querySelector('input#pattern'),
+      addMatcherBtn: document.querySelector('button#addMatcher'),
+      errorText: document.querySelector('p#matcherErrorText')
+    };
+    this.parser = {
+      inputTextArea: document.querySelector('textarea#textInput'),
+      delimiterText: document.querySelector('input#parserDelimiter'),
+      parseTextBtn: document.querySelector('button#parseText'),
+      matcherList: document.querySelector('select#matcherList')
+    };
+    this.display = {
+      outputTextArea: document.querySelector('textarea#matchResults')
+    };
+    this.matchers = [];
+  }
+}
