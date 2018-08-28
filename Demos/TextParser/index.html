@@ -16,6 +16,7 @@
   </nav>
   <header>
     <h1 id="title">Text Parser</h1>
+    <p id="errorText" class="error" hidden></p>
   </header>
   <main>
     <div class="matcher">
@@ -34,7 +35,6 @@
         <input type="checkbox" name="pattern" id="pattern" value="">
         <button type="button" name="addMatcher" id="addMatcher">Add</button>
       </div>
-      <p id="matcherErrorText" class="error" hidden></p>
     </div>
     <div class="parser">
       <h2 class="sectionHeader">Parse text:</h2>
@@ -43,6 +43,7 @@
           <tr>
             <th scope="col">Text to Parse</th>
             <th scope="col">Select Matcher(s)</th>
+            <th scope="col">Matched Text</th>
           </tr>
         </thead>
         <tbody>
@@ -54,18 +55,14 @@
               <button type="button" name="parseText" id="parseText">Parse</button>
             </td>
             <td>
-              <select class="multiList" name="matcherList" id="matcherList" multiple size="10">
-              </select>
+              <select class="multiList" name="matcherList" id="matcherList" multiple size="10"></select>
+            </td>
+            <td>
+              <textarea name="matchResults" id="matchResults" rows="8" cols="80" readonly></textarea>
             </td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="results">
-      <h2 class="sectionHeader">Matched text:</h2>
-      <label for="matchResults"></label>
-      <br>
-      <textarea name="matchResults" id="matchResults" rows="8" cols="80" readonly></textarea>
     </div>
   </main>
   <footer>

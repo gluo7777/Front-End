@@ -10,13 +10,17 @@ document.addEventListener(Events.DOM_LOAD, function(event) {
   // Callbacks
   page.matcher.addMatcherBtn.addEventListener(Events.CLICK, addMatcher);
   page.parser.parseTextBtn.addEventListener(Events.CLICK, parseText);
+  // Focus Resetters
+  document.querySelectorAll('textarea,input').forEach(
+    button => button.addEventListener(Events.CLICK, resetError)
+  );
 });
 
 function addMatcher() {
   // add to in-memory list
   try {
+    resetError();
     var input = page.matcher;
-    resetError(input.errorText);
     var matcher = new Matcher(
       input.nameText.value
       ,input.inputTextArea.value
@@ -26,14 +30,40 @@ function addMatcher() {
     page.matchers.push(matcher);
     addToSelect(matcher, page.matchers.length-1);
   } catch (e) {
-    setError(input.errorText, e);
+    setError(e);
   } finally {
-
+    // TODO: what to do here
   }
 }
 
 function parseText() {
-
+  try {
+    resetError();
+    var input = page.parser;
+    var selectedMatchers = [];
+    // HTMLCollection is not iterable
+    var selected = input.matcherList.selectedOptions;
+    // Retrieve obj that corresponds to HTML elements selected
+    for(var i=0; i<selected.length; i++){
+      selectedMatchers.push(page.matchers[i]);
+    }
+    var parser = new Parser(
+      input.inputTextArea.value
+      ,input.delimiterText.value
+      ,selectedMatchers
+    );
+    var result = parser.parse();
+    if(result.length === 0){
+      setError(new Error('No matches.'));
+    }else{
+      output = page.display;
+      var resultText = [];
+      result.forEach(token => resultText.push(token.inputToken));
+      output.outputTextArea.value = resultText.join(input.delimiterText.value);
+    }
+  } catch (e) {
+    setError(e);
+  } finally {}
 }
 
 function addToSelect(matcher, index) {
@@ -43,12 +73,12 @@ function addToSelect(matcher, index) {
   page.parser.matcherList.add(option);
 }
 
-function setError(element, e) {
-  element.innerText = e.message;
-  element.hidden = false;
+function setError(e) {
+  page.errorText.innerText = e.message;
+  page.errorText.hidden = false;
 }
 
-function resetError(element) {
-  element.innerText = '';
-  element.hidden = true;
+function resetError() {
+  page.errorText.innerText = '';
+  page.errorText.hidden = true;
 }

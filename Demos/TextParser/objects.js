@@ -1,7 +1,8 @@
 // Constants
 const Events = {
   CLICK: 'click',
-  DOM_LOAD: 'DOMContentLoaded'
+  DOM_LOAD: 'DOMContentLoaded',
+  FOCUS: 'focus'
 };
 
 // Errors
@@ -11,17 +12,31 @@ class InputError extends Error {
 // Helper classes to hold data
 class Matcher {
   constructor(name, input, delimiter, isPattern) {
-    if(isBlank(name) || isBlank(input) || isBlank(delimiter)){
-      throw new InputError('Input cannot be blank.');
+    if(isBlank(name) || isBlank(input)){
+      throw new InputError('Matcher input cannot be blank.');
     }
     this.name = name;
     this.input = input.split(delimiter);
     this.isPattern = isPattern;
   }
+
+  matches(token){
+    return this.input.indexOf(token) !== -1;
+  }
+
+  matchesPattern(token){
+    for(var i=0;i<this.input.length;i++){
+      var matchToken = this.input[i];
+      if(strFullMatch(matchToken),token){
+        return matchToken;
+      }
+    }
+    return null;
+  }
 }
 class Parser {
   constructor(input, delimiter, matchers) {
-    if(isBlank(input) || isBlank(delimiter)){
+    if(isBlank(input)){
       throw new InputError('Input cannot be blank.');
     }
     if (matchers.length == 0) {
@@ -30,16 +45,39 @@ class Parser {
     this.input = input.split(delimiter);
     this.matchers = matchers;
   }
+
+  parse(){
+    var matchedTokenList = [];
+    var input = this.input;
+    this.matchers.forEach(function(matcher) {
+      if(matcher.isPattern){
+        input.forEach(function(text) {
+          var matchedToken = matcher.matchesPattern(text);
+          if(!matchedToken){
+              matchedTokenList.push(Match.createMatchedToken(text,matchedToken));
+          }
+        })
+      }else {
+        input.forEach(function(text) {
+          if(matcher.matches(text)){
+            matchedTokenList.push(Match.createMatchedToken(text,text));
+          }
+        })
+      }
+    });
+    return matchedTokenList;
+  }
 }
 class Match {
   constructor(matchedTokenList) {
     this.matchedTokenList = matchedTokenList;
   }
 
-  static createMatchedToken(token, isMatch, matcherToken) {
-    this.token = token;
-    this.isMatch = isMatch;
-    this.matcherToken = matcherToken;
+  static createMatchedToken(inputToken, matcherToken) {
+    return {
+      inputToken: inputToken
+      ,matcherToken: matcherToken
+    };
   }
 }
 
@@ -52,8 +90,7 @@ class Page {
       inputTextArea: document.querySelector('textarea#matcherInput'),
       delimiterText: document.querySelector('input#matcherDelimiter'),
       patternCheckBox: document.querySelector('input#pattern'),
-      addMatcherBtn: document.querySelector('button#addMatcher'),
-      errorText: document.querySelector('p#matcherErrorText')
+      addMatcherBtn: document.querySelector('button#addMatcher')
     };
     this.parser = {
       inputTextArea: document.querySelector('textarea#textInput'),
@@ -65,5 +102,6 @@ class Page {
       outputTextArea: document.querySelector('textarea#matchResults')
     };
     this.matchers = [];
+    this.errorText = document.querySelector('p#errorText');
   }
 }
