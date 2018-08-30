@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      /*
+       attribute - any value
+      */
+      [somebs]{
+          color: lightgreen;
+      }
+      /*
+       attribute - specified value
+      */
+      [somebs="def"]{
+          color: darkblue;
+      }
+      /*
+       attribute - value contains text
+      */
+      [somebs~="val2"]{
+          color: purple;
+      }
+      /*
+       attribute - value starts with
+      */
+      [somebs^="will"]{
+          color: gold;
+      }
+      /*
+       attribute - value ends with
+      */
+      [somebs$="ing"]{
+          color: brown;
+      }
+      /*
+       attribute - text within value
+      */
+      [somebs*="yes"]{
+          color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">From:developer.mozilla.org</a>
+    <!-- somebs is non-standard attribute -->
+    <!-- see data-* attributes -->
+    <p somebs="abc">Custom attribute.</p>
+    <p somebs="def">Custom attribute value.</p>
+    <p somebs="val1 val2 val3 val4">Some value within.</p>
+    <p somebs="will">will</p>
+    <p somebs="william">william</p>
+    <p somebs="ing">ing</p>
+    <p somebs="running">running</p>
+    <p somebs="noyesno">noyesno</p>
+  </body>
+</html>
