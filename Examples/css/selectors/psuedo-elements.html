@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      p[id^="text"]::after{
+        content: 'after-text';
+      }
+      p[myattr="bobby"]::before{
+        content: 'before-text';
+      }
+      p[id="assignment"]::first-line{
+        font-weight: bold;
+      }
+      p[id="assignment"]::first-letter{
+        font-size: 3em;
+  border: 1px solid black;
+  background: red;
+  display: block;
+  float: left;
+  padding: 2px;
+  margin-right: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="text1">This is</p>
+    <p id="text2">This is</p>
+    <p myattr="bobby"></p>
+    <!-- Assignment -->
+    <p id="assignment">This is my very important paragraph.
+ I am a distinguished gentleman of such renown that my paragraph
+ needs to be styled in a manner befitting my majesty. Bow before 
+my splendour, dear students, and go forth and learn CSS!</p>
+  </body>
+</html>
