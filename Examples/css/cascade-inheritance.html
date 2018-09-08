@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen">
+    /* Reference: https: //developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance */
+
+    #winning {
+      background-color: red;
+      border: 1px solid black;
+    }
+
+    .better {
+      /* Specificity (id > class) so background-color: red; applied instead */
+      background-color: gray;
+      /* Importance > all so this is applied */
+      /* bad practice - breaks cascading and hard to debug */
+      border: none !important;
+    }
+
+    p {
+      /* Specificity > Source order so background-color: gray; applied instead */
+      background-color: blue;
+      color: white;
+      padding: 5px;
+    }
+
+    html {
+      /* certain properties will be inherited by children, but not all */
+      /* e.g. margin, padding, border, and background-image are not inherited */
+      font-family: monospace;
+      color: darkblue;
+    }
+
+    /* Controlling inheritance */
+
+    #parent1 {
+      color: green;
+    }
+
+    .my-class-1 a {
+      color: inherit;
+    }
+
+    .my-class-2 a {
+      color: initial;
+    }
+
+    .my-class-3 a {
+      color: unset;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Cascading Tree</h1>
+  <ol>
+    <li>Importance</li>
+    <li>Specificity</li>
+    <li>Source order</li>
+  </ol>
+  <p>Copied from <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance">Mozilla</a>.</p>
+  <h1>Example</h1>
+  <p class="better">This is a paragraph.</p>
+  <p class="better" id="winning">One selector to rule them all!</p>
+  <h1>Conflicting Declarations Order</h1>
+  <ol>
+    <li>Declarations in user agent style sheets (e.g. the browser's default styles, used when no other styling is set).</li>
+    <li>Normal declarations in user style sheets (custom styles set by a user).</li>
+    <li>Normal declarations in author style sheets (these are the styles set by us, the web developers).</li>
+    <li>Important declarations in author style sheets</li>
+    <li>Important declarations in user style sheets</li>
+  </ol>
+  <h1>Computing Specificity Score</h1>
+  <ol>
+    <li>Thousands: Score one in this column if the declaration is inside a style attribute (such declarations don't have selectors, so their specificity is always simply 1000.) Otherwise 0.</li>
+    <li> Hundreds: Score one in this column for each ID selector contained inside the overall selector.</li>
+    <li> Tens: Score one in this column for each class selector, attribute selector, or pseudo-class contained inside the overall selector.</li>
+    <li> Ones: Score one in this column for each element selector or pseudo-element contained inside the overall selector.</li>
+  </ol>
+  <h1>Controlling inheritance</h1>
+  <ol>
+    <li>Inherit - same as parent</li>
+    <li>initial - browser defalult style sheet or inherit otherwise</li>
+    <li>unset - natural value i.e. inherit or initial</li>
+    <li>revert - user css or user agent css</li>
+  </ol>
+  <h2>Example</h2>
+  <ul id="parent1">
+    <li>Default <a href="#">link</a> color</li>
+    <li class="my-class-1">Inherit the <a href="#">link</a> color</li>
+    <li class="my-class-2">Reset the <a href="#">link</a> color</li>
+    <li class="my-class-3">Unset the <a href="#">link</a> color</li>
+  </ul>
+</body>
+
+</html>
