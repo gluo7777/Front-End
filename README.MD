@@ -27,7 +27,8 @@
     - <div>, 2em
         - <p>, 2em = 10 * 2 * 2 = 40
 * nested complexity
-
+#### box layout
+![From developer.mozilla.org](https://mdn.mozillademos.org/files/13647/box-model-standard-small.png)
 ## html
 ### Non-line-breaking space
 ```HTML
