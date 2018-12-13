@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen">
+    /*     https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units */
+
+    /*       default font-size = 16 px */
+
+    /* ems = 16/parent px * n */
+
+    /* rems = ems, but always 16 px */
+
+    p {
+      margin: 5px;
+      padding: 10px;
+      border: 2px solid black;
+      background-color: cyan;
+    }
+
+    p:nth-child(1) {
+      width: 150px;
+      font-size: 18px;
+    }
+
+    p:nth-child(2) {
+      width: 250px;
+      font-size: 24px;
+    }
+
+    p:nth-child(3) {
+      width: 350px;
+      font-size: 30px;
+    }
+
+    /* unitless values */
+
+    /* 0 always works */
+
+    p:nth-child(4) {
+      margin: 0;
+      border: 0;
+      padding: 0;
+    }
+
+    /* unitless multiplicative values */
+
+    p:nth-child(5) {
+      line-height: 2.5;
+    }
+
+    /* animations */
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    p[id='rotation'] {
+      color: red;
+      width: 300px;
+      font-size: 40px;
+      transform-origin: left;
+    }
+
+    p[id='rotation']:hover {
+      animation-name: rotate;
+      animation-duration: 3.555s;
+      animation-timing-function: linear;
+      animation-iteration-count: 5;
+    }
+
+    #percentages .boxes {
+      margin: 10px;
+      /*       same as 2ems */
+      font-size: 200%;
+      color: white;
+      height: 150px;
+      border: 2px solid black;
+    }
+
+    #percentages .boxes:nth-child(1) {
+      background-color: red;
+      width: 650px;
+    }
+
+    #percentages .boxes:nth-child(2) {
+      background-color: blue;
+      /*       relative to 75% of parent (body) */
+      width: 75%;
+    }
+
+    .outer {
+      width: 100%;
+      height: 10em;
+      background-color: red;
+    }
+
+    .inner {
+      margin: auto;
+      width: 50%;
+      height: 50%;
+      background-color: blue;
+    }
+
+    /* colors */
+
+    .colors p:nth-child(1) {
+      background-color: rgb(255, 0, 0);
+    }
+
+    .colors p:nth-child(2) {
+      background-color: rgba(255, 0, 0, 0.5);
+    }
+    .colors p:nth-child(3) {
+      background-color: rgba(255, 0, 0, 0.25);
+    }
+    .colors p:nth-child(4) {
+      background-color: rgba(255, 0, 0, 0.125);
+    }
+    .colors p:nth-child(5) {
+      /* set transparency of entire box and elements within (even text) */
+      background-color: rgb(255, 0, 0);
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body>
+  <p>This is a paragraph.</p>
+  <p>This is a paragraph.</p>
+  <p>This is a paragraph.</p>
+  <p>This is a paragraph.</p>
+  <p>Blue ocean silo royal baby space glocal evergreen relationship housekeeping native advertising diversify ideation session. Soup-to-nuts herding cats resolutionary virtuoso granularity catalyst wow factor loop back brainstorm. Core competency baked in
+    push back silo irrational exuberance circle back roll-up.</p>
+  <p id='rotation'>Watch me rotate!@!@!@!@!</p>
+
+  <div id="percentages">
+    <div class="boxes">Fixed width layout with pixels</div>
+    <div class="boxes">Liquid layout with percentages</div>
+  </div>
+
+  <!--   assignment -->
+  <div class="outer">
+    <div class="inner">
+    </div>
+  </div>
+
+  <div class="colors">
+    <p>Regular rgb</p>
+    <p>Regular rgb with some transparency</p>
+    <p>Regular rgb with some transparency</p>
+    <p>Regular rgb with some transparency</p>
+    <p>Regular rgb with some transparency</p>
+  </div>
+</body>
+
+</html>
