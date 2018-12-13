@@ -1,0 +1,17 @@
+.blue-box{
+    border: 1px solid blue;
+    background-color: aqua;
+}
+.green-box{
+    border: 1px solid green;
+    background-color: greenyellow
+}
+
+.split-box{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.split-box>*{
+    min-width: 0;
+}
