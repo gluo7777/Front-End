@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator Demo without React</title>
+    <style>
+        #root{
+            width: 250px;
+            height: 200px;
+            border: 2px solid blue;
+            background-color: cyan;
+            padding: 2px;
+            font-size: 1.5em;
+        }
+        .container{
+            display: flex;
+            align-content: space-around;
+            justify-content: space-around;
+        }
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .vertical{
+            flex-direction: column;
+        }
+        .horizontal{
+            flex-direction: row;
+        }
+        button{
+            margin: 2px;
+            height: 25px;
+        }
+        .container>button{
+            width: 50%;
+            height: 40px;
+        }
+        input{
+            width: 100%;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" class="vertical container">
+        <div id="display" class="horizontal container">
+            <input type="text" name="displayInput" id="displayInput" disabled>
+        </div>
+        <div id="numberpad" class="grid">
+                <button>7</button><button>8</button><button>9</button><button>+</button>
+                <button>4</button><button>5</button><button>6</button><button>-</button>
+                <button>1</button><button>2</button><button>3</button><button>x</button>
+                <button>0</button><button>.</button><button>-</button><button>÷</button>
+        </div>
+        <div class="horizontal container">
+            <button>clear</button><button>=</button>
+        </div>
+    </div>
+</body>
+</html>
